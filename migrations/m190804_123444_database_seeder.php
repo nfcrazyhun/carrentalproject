@@ -22,6 +22,14 @@ class m190804_123444_database_seeder extends Migration
             'is_admin' => '1'
         ]);
 
+        $this->insert('rental',[
+           'user_id' => '1',
+           'car_id' => '1',
+           'rent_start' => '2019-08-04 00:01:00',
+           'rent_end' => '2019-08-04 23:59:00',
+           'comment' => 'Database seeder rental test No.1',
+        ]);
+
         $this->insert('car', [
             'brand' => 'Ford',
             'model' => 'Sierra',
@@ -113,6 +121,11 @@ class m190804_123444_database_seeder extends Migration
         $this->delete('user', [
             'username' => 'teszt1',
             ]);
+
+        $this->delete('rental',[
+            'car_id' => 1,
+            'comment' => 'Database seeder rental test No.1',
+        ]);
 
         $this->delete('car', [
             'reg_no' => 'frd-001',
