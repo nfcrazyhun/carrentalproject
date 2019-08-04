@@ -14,22 +14,15 @@ class m190804_123444_database_seeder extends Migration
      */
     public function safeUp()
     {
-
+        //insert users
         $this->insert('user', [
             'username' => 'teszt1',
             'password' => Yii::$app->getSecurity()->generatePasswordHash('teszt1'),
             'email' => 'tesz1@elek.hu',
-            'is_admin' => '1'
+            'is_admin' => 1
         ]);
 
-        $this->insert('rental',[
-           'user_id' => '1',
-           'car_id' => '1',
-           'rent_start' => '2019-08-04 00:01:00',
-           'rent_end' => '2019-08-04 23:59:00',
-           'comment' => 'Database seeder rental test No.1',
-        ]);
-
+        //insert cars
         $this->insert('car', [
             'brand' => 'Ford',
             'model' => 'Sierra',
@@ -108,6 +101,15 @@ class m190804_123444_database_seeder extends Migration
             'reg_no' => 'sbr-001',
             'rate' => 8000,
             'is_broken' => 0,
+        ]);
+
+        //insert rental
+        $this->insert('rental',[
+            'user_id' => 1,
+            'car_id' => 1,
+            'rent_start' => '2019-08-04 00:01:00',
+            'rent_end' => '2019-08-04 23:59:00',
+            'comment' => 'Database seeder rental test No.1',
         ]);
 
     }
