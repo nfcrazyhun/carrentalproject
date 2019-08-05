@@ -30,7 +30,7 @@ class m190804_123444_database_seeder extends Migration
             'odometer' => 321000,
             'reg_no' => 'frd-001',
             'rate' => 4000,
-            'is_broken' => 0,
+            'status' => 1,
         ]);
 
         $this->insert('car', [
@@ -40,7 +40,7 @@ class m190804_123444_database_seeder extends Migration
             'odometer' => 132000,
             'reg_no' => 'tya-001',
             'rate' => 3000,
-            'is_broken' => 0,
+            'status' => 1,
         ]);
 
         $this->insert('car', [
@@ -50,7 +50,7 @@ class m190804_123444_database_seeder extends Migration
             'odometer' => 75000,
             'reg_no' => 'tya-002',
             'rate' => 3000,
-            'is_broken' => 0,
+            'status' => 1,
         ]);
 
         $this->insert('car', [
@@ -60,7 +60,7 @@ class m190804_123444_database_seeder extends Migration
             'odometer' => 195000,
             'reg_no' => 'hda-001',
             'rate' => 5000,
-            'is_broken' => 0,
+            'status' => 1,
         ]);
 
         $this->insert('car', [
@@ -70,7 +70,7 @@ class m190804_123444_database_seeder extends Migration
             'odometer' => 285000,
             'reg_no' => 'hda-002',
             'rate' => 7000,
-            'is_broken' => 0,
+            'status' => 1,
         ]);
 
         $this->insert('car', [
@@ -80,7 +80,7 @@ class m190804_123444_database_seeder extends Migration
             'odometer' => 180000,
             'reg_no' => 'nsn-001',
             'rate' => 6000,
-            'is_broken' => 0,
+            'status' => 1,
         ]);
 
         $this->insert('car', [
@@ -90,7 +90,7 @@ class m190804_123444_database_seeder extends Migration
             'odometer' => 232000,
             'reg_no' => 'nsn-002',
             'rate' => 6000,
-            'is_broken' => 0,
+            'status' => 1,
         ]);
 
         $this->insert('car', [
@@ -100,7 +100,7 @@ class m190804_123444_database_seeder extends Migration
             'odometer' => 155000,
             'reg_no' => 'sbr-001',
             'rate' => 8000,
-            'is_broken' => 0,
+            'status' => 1,
         ]);
 
         //insert rental
@@ -122,7 +122,7 @@ class m190804_123444_database_seeder extends Migration
     {
         $this->delete('user', [
             'username' => 'teszt1',
-            ]);
+        ]);
 
         $this->delete('rental',[
             'car_id' => 1,

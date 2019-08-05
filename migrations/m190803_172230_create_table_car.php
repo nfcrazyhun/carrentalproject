@@ -23,7 +23,7 @@ class m190803_172230_create_table_car extends Migration
             'rate' => $this->integer(),
             'created_at' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
             'modified_at' => $this->timestamp(),
-            'is_broken' => $this->boolean(),
+            'status' => $this->integer(),
         ],
             'ENGINE InnoDB'
         );
