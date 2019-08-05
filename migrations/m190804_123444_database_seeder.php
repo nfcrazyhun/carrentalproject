@@ -19,7 +19,8 @@ class m190804_123444_database_seeder extends Migration
             'username' => 'teszt1',
             'password' => Yii::$app->getSecurity()->generatePasswordHash('teszt1'),
             'email' => 'tesz1@elek.hu',
-            'is_admin' => 1
+            'status' => 1,
+            'is_admin' => 1,
         ]);
 
         //insert cars
