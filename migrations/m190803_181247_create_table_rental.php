@@ -27,7 +27,7 @@ class m190803_181247_create_table_rental extends Migration
             'ENGINE InnoDB'
         );
 
-        // add foreign key for table `rental` and `user`
+        // add foreign key for table `rental` to `user`
         $this->addForeignKey(
             'fk_rental_user_user_id',
             'rental',
@@ -37,7 +37,7 @@ class m190803_181247_create_table_rental extends Migration
             'CASCADE'
         );
 
-        // add foreign key for table `rental` and `car`
+        // add foreign key for table `rental` to `car`
         $this->addForeignKey(
             'fk_rental_car_car_id',
             'rental',
