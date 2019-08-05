@@ -52,7 +52,10 @@ AppAsset::register($this);
                 )
                 . Html::endForm()
                 . '</li>'
-            )
+            ),
+            ['label' => 'Cars', 'url' => ['/car']],
+            ['label' => 'Rentals', 'url' => ['/rental']],
+            ['label' => 'Users', 'url' => ['/user']],
         ],
     ]);
     NavBar::end();

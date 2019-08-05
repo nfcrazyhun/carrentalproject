@@ -18,6 +18,7 @@ class m190803_164423_create_table_user extends Migration
             'username' => $this->string(),
             'password' => $this->string(),
             'email' => $this->string(),
+            'auth_key' => $this->string()->unique(),
             'created_at' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
             'modified_at' => $this->timestamp(),
             'status'=> $this->integer(),

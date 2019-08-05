@@ -17,8 +17,9 @@ class m190804_123444_database_seeder extends Migration
         //insert users
         $this->insert('user', [
             'username' => 'teszt1',
-            'password' => Yii::$app->getSecurity()->generatePasswordHash('teszt1'),
+            'password' => Yii::$app->security->generatePasswordHash('teszt1'),
             'email' => 'tesz1@elek.hu',
+            'auth_key' => Yii::$app->security->generateRandomString(),
             'status' => 1,
             'is_admin' => 1,
         ]);
