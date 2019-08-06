@@ -40,6 +40,12 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['created_at', 'modified_at'], 'safe'],
             [['status', 'is_admin'], 'integer'],
             [['username', 'password', 'email', 'auth_key'], 'string', 'max' => 255],
+            // username,email,password attributes are required
+            [['username', 'password', 'email'] ,'required'],
+            // password must be minimum 5 character
+            [['password'], 'min'=>5],
+            // the email attribute should be a valid email address
+            [['email'],'email'],
         ];
     }
 
@@ -149,4 +155,12 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function validatePassword($password){
         return Yii::$app->getSecurity()->validatePassword($password, $this->password);
     }
+
+    public function isAdmin(){
+        if($this->is_admin === 1){
+            return true;
+        }
+        return false;
+    }
+
 }

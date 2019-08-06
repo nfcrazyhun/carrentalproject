@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -125,4 +126,32 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    /**
+     * Displays Signup page.
+     * @return string
+     * @throws \yii\base\Exception
+     */
+    public function actionSignup()
+    {
+        $model = new User();
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+                $model->username = $_POST['User']['username'];
+                $model->password = Yii::$app->security->generatePasswordHash($_POST['User']['password']);
+                $model->email = $_POST['User']['email'];
+                $model->auth_key = Yii::$app->security->generateRandomString();
+
+                if ($model->save()) {
+                    return $this->redirect(['site/login']);
+                }
+            }
+        }
+
+        return $this->render('signup', [
+            'model' => $model,
+        ]);
+    }
+
 }
