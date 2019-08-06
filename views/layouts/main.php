@@ -58,7 +58,11 @@ AppAsset::register($this);
             ):(''),
 
             Yii::$app->user->isGuest ? (
-            ['label' => 'Signup', 'url' => ['/site/signup']]
+                ['label' => 'Signup', 'url' => ['/site/signup']]
+            ):(''),
+
+            1 ? (
+                ['label' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'url' => ['/site/signup']]
             ):(''),
 
             ['label' => 'Cars', 'url' => ['/car']],
