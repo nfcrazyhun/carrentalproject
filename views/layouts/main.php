@@ -57,17 +57,20 @@ AppAsset::register($this);
                 ['label' => 'Signup', 'url' => ['/site/signup']]
             ):(''),
 
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Signup', 'url' => ['/site/signup']]
+            //admin buttons
+            Yii::$app->user->getId() && Yii::$app->user->identity->isAdmin() === true ? (
+                ['label' => 'Cars', 'url' => ['/car']]
+            ):(''),
+            Yii::$app->user->getId() && Yii::$app->user->identity->isAdmin() === true ? (
+                ['label' => 'Rentals', 'url' => ['/rental']]
+            ):(''),
+            Yii::$app->user->getId() && Yii::$app->user->identity->isAdmin() === true ? (
+                ['label' => 'Users', 'url' => ['/user']]
             ):(''),
 
-            1 ? (
-                ['label' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'url' => ['/site/signup']]
-            ):(''),
 
-            ['label' => 'Cars', 'url' => ['/car']],
-            ['label' => 'Rentals', 'url' => ['/rental']],
-            ['label' => 'Users', 'url' => ['/user']],
+
+
         ],
     ]);
     NavBar::end();
