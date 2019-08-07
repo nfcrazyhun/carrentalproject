@@ -17,12 +17,17 @@ use yii\web\IdentityInterface;
  * @property string $created_at
  * @property string $modified_at
  * @property int $status
- * @property int $is_admin
+ * @property int $role
  *
  * @property Rental[] $rentals
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
+
+    const ROLE_USER = 0;
+    const ROLE_ADMIN = 1;
+
+
     /**
      * {@inheritdoc}
      */
@@ -38,14 +43,17 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             [['created_at', 'modified_at'], 'safe'],
-            [['status', 'is_admin'], 'integer'],
+            [['status', 'role'], 'integer'],
             [['username', 'password', 'email', 'auth_key'], 'string', 'max' => 255],
+            [['auth_key'], 'unique'],
             // username,email,password attributes are required
             [['username', 'password', 'email'] ,'required'],
             // password must be minimum 5 character
             [['password'],'string', 'min'=>5],
             // the email attribute should be a valid email address
             [['email'],'email'],
+            ['role', 'default', 'value' => 0],
+            ['role', 'in', 'range' => [self::ROLE_USER, self::ROLE_ADMIN]],
         ];
     }
 
@@ -63,7 +71,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'created_at' => 'Created At',
             'modified_at' => 'Modified At',
             'status' => 'Status',
-            'is_admin' => 'Is Admin',
+            'role' => 'Role',
         ];
     }
 
@@ -159,10 +167,15 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
     /**
      * Returns user is admin or not.
+     * @param $id
      * @return bool
      */
-    public function isAdmin(){
-        return (boolean) $this->is_admin;
+    public static function isUserAdmin($id)
+    {
+        if (static::findOne(['id' => $id, 'role' => self::ROLE_ADMIN])) {
+            return true;
+        }
+        return false;
     }
 
 }

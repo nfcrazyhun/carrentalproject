@@ -58,13 +58,13 @@ AppAsset::register($this);
             ):(''),
 
             //admin buttons
-            Yii::$app->user->getId() && Yii::$app->user->identity->isAdmin() === true ? (
+            Yii::$app->user->getId() && Yii::$app->user->identity->isUserAdmin(Yii::$app->user->getId()) === true ? (
                 ['label' => 'Cars', 'url' => ['/car']]
             ):(''),
-            Yii::$app->user->getId() && Yii::$app->user->identity->isAdmin() === true ? (
+            Yii::$app->user->getId() && Yii::$app->user->identity->isUserAdmin(Yii::$app->user->getId()) === true ? (
                 ['label' => 'Rentals', 'url' => ['/rental']]
             ):(''),
-            Yii::$app->user->getId() && Yii::$app->user->identity->isAdmin() === true ? (
+            Yii::$app->user->getId() && Yii::$app->user->identity->isUserAdmin(Yii::$app->user->getId()) === true ? (
                 ['label' => 'Users', 'url' => ['/user']]
             ):(''),
 

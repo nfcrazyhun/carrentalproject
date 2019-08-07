@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'created_at',
             //'modified_at',
             //'status',
-            //'is_admin',
+            //'role',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

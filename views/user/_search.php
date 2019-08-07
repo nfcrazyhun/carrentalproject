@@ -31,7 +31,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'status') ?>
 
-    <?php // echo $form->field($model, 'is_admin') ?>
+    <?php // echo $form->field($model, 'role') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

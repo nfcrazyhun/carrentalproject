@@ -22,7 +22,7 @@ class m190803_164423_create_table_user extends Migration
             'created_at' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
             'modified_at' => $this->timestamp(),
             'status'=> $this->integer()->defaultValue(1),
-            'is_admin' => $this->boolean()->defaultValue(0),
+            'role' => $this->boolean()->defaultValue(0),
         ],
             'ENGINE InnoDB'
         );
