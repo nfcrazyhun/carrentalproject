@@ -68,6 +68,9 @@ AppAsset::register($this);
                 ['label' => 'Users', 'url' => ['/user']]
             ):(''),
 
+            Yii::$app->user->getId() ? (
+            ['label' => 'Rental History', 'url' => ['/rental/rental-history']]
+            ):(''),
 
 
 

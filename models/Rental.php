@@ -77,4 +77,25 @@ class Rental extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
+
+    public function getRentalStatus(){
+        $statusCode = $this->status;
+        $statusText = null;
+
+        switch ($statusCode) {
+            case 1:
+                $statusText = 'Active';
+                break;
+            case 2:
+                $statusText = 'Finished';
+                break;
+            case 3:
+                $statusText = 'Canceled';
+                break;
+            default:
+                $statusText = null;
+        }
+
+        return $statusText;
+    }
 }

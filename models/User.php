@@ -178,4 +178,22 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return false;
     }
 
+    public function getRentalStatus(){
+        $statusCode = $this->status;
+        $statusText = null;
+
+        switch ($statusCode) {
+            case 1:
+                $statusText = 'Active';
+                break;
+            case 2:
+                $statusText = 'Inactive';
+                break;
+            default:
+                $statusText = null;
+        }
+
+        return $statusText;
+    }
+
 }

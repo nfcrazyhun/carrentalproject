@@ -23,6 +23,14 @@ class m190804_123444_database_seeder extends Migration
             'role' => 1,
         ]);
 
+        $this->insert('user', [
+            'username' => 'teszt2',
+            'password' => Yii::$app->security->generatePasswordHash('teszt2'),
+            'email' => 'teszt2@elek.hu',
+            'auth_key' => Yii::$app->security->generateRandomString(),
+            'role' => 0,
+        ]);
+
         //insert cars
         $this->insert('car', [
             'brand' => 'Ford',
@@ -113,6 +121,14 @@ class m190804_123444_database_seeder extends Migration
             'comment' => 'Database seeder rental test No.1',
         ]);
 
+        $this->insert('rental',[
+            'user_id' => 2,
+            'car_id' => 2,
+            'rent_start' => '2019-08-05 00:01:00',
+            'rent_end' => '2019-08-05 23:59:00',
+            'comment' => 'Database seeder rental test No.2',
+        ]);
+
     }
 
     /**
@@ -125,9 +141,18 @@ class m190804_123444_database_seeder extends Migration
             'username' => 'teszt1',
         ]);
 
+        $this->delete('user', [
+            'username' => 'teszt2',
+        ]);
+
         $this->delete('rental',[
             'car_id' => 1,
             'comment' => 'Database seeder rental test No.1',
+        ]);
+
+        $this->delete('rental',[
+            'car_id' => 2,
+            'comment' => 'Database seeder rental test No.2',
         ]);
 
         $this->delete('car', [

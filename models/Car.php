@@ -70,4 +70,35 @@ class Car extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Rental::className(), ['car_id' => 'id']);
     }
+
+    public function getCarFullName(){
+
+        $format = '%s %s (%d)';
+
+        return sprintf($format,$this->brand,$this->model,$this->year);
+    }
+
+    public function getCarStatus(){
+        $statusCode = $this->status;
+        $statusText = null;
+
+        switch ($statusCode) {
+            case 1:
+                $statusText = 'Active';
+                break;
+            case 2:
+                $statusText = 'Inactive';
+                break;
+            case 3:
+                $statusText = 'Broken';
+                break;
+            case 4:
+                $statusText = 'Removed';
+                break;
+            default:
+                $statusText = null;
+        }
+
+        return $statusText;
+    }
 }

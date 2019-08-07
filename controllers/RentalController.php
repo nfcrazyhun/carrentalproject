@@ -2,11 +2,9 @@
 
 namespace app\controllers;
 
-use app\models\User;
-use yii\filters\AccessControl;
 use Yii;
 use app\models\Rental;
-use app\models\search\Rental as RentalSearch;
+use app\models\search\RentalSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -22,24 +20,10 @@ class RentalController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['index','view','create','update','delete'],
-                'rules' => [
-                    [
-                        'actions' => ['index','view','create','update','delete'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action) {
-                            return User::isUserAdmin(Yii::$app->user->getId());
-                        }
-                    ],
-                ],
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    'delete' => ['POST'],
                 ],
             ],
         ];
@@ -139,5 +123,18 @@ class RentalController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionRentalHistory()
+    {
+        $userId = Yii::$app->user->getId();
+
+        $searchModel = new RentalSearch();
+        $dataProvider = $searchModel->rentalHistorySearch($userId);
+
+        return $this->render('rental-history', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 }

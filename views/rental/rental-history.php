@@ -22,21 +22,34 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'user_id',
-            'car_id',
+            //'id',
+            //'user_id',
+            //'car_id',
+            [
+                'attribute' => 'car_id',
+                'label' => 'Car',
+                'value' => 'car.carfullname',
+            ],
             'rent_start',
             'rent_end',
-            'created_at',
-            'modified_at',
-            'comment:ntext',
-            'status',
+            //'created_at',
+            //'modified_at',
+            //'comment:ntext',
+            //'status',
+            [
+                'attribute' => 'status',
+                'label' => 'Status',
+                'value' => 'rentalstatus',
+            ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {delete}',
+            ],
         ],
     ]); ?>
 
