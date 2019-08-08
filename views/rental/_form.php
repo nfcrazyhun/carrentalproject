@@ -1,5 +1,7 @@
 <?php
 
+use app\models\Car;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -15,7 +17,9 @@ use yii\widgets\ActiveForm;
 <!--    <//?= $form->field($model, 'user_id')->textInput() ?>-->
     <?= $form->field($model, 'user_id')->hiddenInput(['value'=>Yii::$app->user->getId()])->label(false); ?>
 
-    <?= $form->field($model, 'car_id')->textInput() ?>
+<!--    <// $form->field($model, 'car_id')->textInput() ?>-->
+
+    <?= $form->field($model, 'car_id',)->label('Car')->dropDownList(ArrayHelper::map(Car::find()->all(),'id','carfullname'),['prompt'=>'Select Car']) ?>
 
     <?= $form->field($model, 'rent_start')->textInput() ?>
 
@@ -23,11 +27,11 @@ use yii\widgets\ActiveForm;
 
 <!--    <//?= $form->field($model, 'created_at')->textInput() ?>-->
 
-    <?= $form->field($model, 'modified_at')->textInput() ?>
+<!--    <//?= $form->field($model, 'modified_at')->textInput() ?>-->
 
     <?= $form->field($model, 'comment')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+<!--    <//?= $form->field($model, 'status')->textInput() ?>-->
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
