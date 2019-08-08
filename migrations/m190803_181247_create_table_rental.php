@@ -23,7 +23,7 @@ class m190803_181247_create_table_rental extends Migration
             'created_at' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
             'modified_at' => $this->timestamp(),
             'comment' => $this->text(),
-            'status' => $this->integer(),
+            'status' => $this->integer()->defaultValue(1),
         ],
             'ENGINE InnoDB'
         );
