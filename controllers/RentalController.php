@@ -154,12 +154,12 @@ class RentalController extends Controller
 
     public function actionRentalHistory()
     {
-        $userId = Yii::$app->user->getId();
-
         $searchModel = new RentalSearch();
-        $dataProvider = $searchModel->rentalHistorySearch($userId);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        //extra parameter:filter where user_id = current user's id
+        $dataProvider->query->andWhere(['user_id'=> Yii::$app->user->getId()]);
 
-        return $this->render('rental-history', [
+        return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

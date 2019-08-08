@@ -125,19 +125,6 @@ class CarController extends Controller
         return $this->redirect(['index']);
     }
 
-    public function actionWreck()
-    {
-        $searchModel = new CarSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        //extra parameter
-        $dataProvider->query->andWhere(['status'=>Car::STATUS_BROKEN]);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
     /**
      * Finds the Car model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -152,5 +139,18 @@ class CarController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionWreck()
+    {
+        $searchModel = new CarSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        //extra parameter:filter where status = broker
+        $dataProvider->query->andWhere(['status'=>Car::STATUS_BROKEN]);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 }
