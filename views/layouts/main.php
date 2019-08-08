@@ -38,42 +38,45 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => '🏠 Home', 'url' => ['/site/index']],
+            ['label' => '🚗 About', 'url' => ['/site/about']],
+            ['label' => '📧 Contact', 'url' => ['/site/contact']],
+
+
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
+            ['label' => '📝 Signup', 'url' => ['/site/signup']]
+            ):(''),
+
+            //admin buttons
+                    Yii::$app->user->getId() && Yii::$app->user->identity->isUserAdmin(Yii::$app->user->getId()) === true ? (
+                    ['label' => '🚓 Cars', 'url' => ['/car'],'active' => $this->context->route == 'car/index']
+                    ):(''),
+                    Yii::$app->user->getId() && Yii::$app->user->identity->isUserAdmin(Yii::$app->user->getId()) === true ? (
+                    ['label' => '🏎️ Rentals', 'url' => ['/rental'],'active' => $this->context->route == 'rental/index']
+                    ):(''),
+                    Yii::$app->user->getId() && Yii::$app->user->identity->isUserAdmin(Yii::$app->user->getId()) === true ? (
+                    ['label' => '🧙‍️ Users', 'url' => ['/user'],'active' => $this->context->route == 'user/index']
+                    ):(''),
+
+
+
+                    Yii::$app->user->getId() ? (
+                    ['label' => '💬 Rental History', 'url' => ['/rental/rental-history']]
+                    ):(''),
+
+
+            Yii::$app->user->isGuest ? (
+            ['label' => '🔑 Login', 'url' => ['/site/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    '🔐 Logout (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
                 . '</li>'
             ),
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Signup', 'url' => ['/site/signup']]
-            ):(''),
-
-            //admin buttons
-            Yii::$app->user->getId() && Yii::$app->user->identity->isUserAdmin(Yii::$app->user->getId()) === true ? (
-                ['label' => 'Cars', 'url' => ['/car']]
-            ):(''),
-            Yii::$app->user->getId() && Yii::$app->user->identity->isUserAdmin(Yii::$app->user->getId()) === true ? (
-                ['label' => 'Rentals', 'url' => ['/rental']]
-            ):(''),
-            Yii::$app->user->getId() && Yii::$app->user->identity->isUserAdmin(Yii::$app->user->getId()) === true ? (
-                ['label' => 'Users', 'url' => ['/user']]
-            ):(''),
-
-            Yii::$app->user->getId() ? (
-            ['label' => 'Rental History', 'url' => ['/rental/rental-history']]
-            ):(''),
-
-
-
         ],
     ]);
     NavBar::end();
