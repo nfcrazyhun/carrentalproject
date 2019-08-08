@@ -32,11 +32,11 @@ use yii\widgets\ActiveForm;
         'attribute' => 'rent_start',
         'name' => 'rent_start',
         'type' => DateTimePicker::TYPE_COMPONENT_PREPEND,
-        'value' => date('Y-m-d H:i:00'),
+        'value' => date('Y-m-d H:i'),
         'options' => ['placeholder' => 'Enter start time ...'],
         'pluginOptions' => [
             'autoclose' => true,
-            'format' => 'yyyy-mm-dd hh:ii',
+            'format' => 'yyyy-mm-dd hh:ii:00',
             'startDate' => date("Y-m-d"),
         ]
     ]);
@@ -54,7 +54,7 @@ use yii\widgets\ActiveForm;
         'options' => ['placeholder' => 'Enter end time ...'],
         'pluginOptions' => [
             'autoclose' => true,
-            'format' => 'yyyy-mm-dd hh:ii',
+            'format' => 'yyyy-mm-dd hh:ii:00',
             'startDate' => date('Y-m-d'),
         ]
     ]);
