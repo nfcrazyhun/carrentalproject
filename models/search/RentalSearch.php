@@ -91,8 +91,8 @@ class RentalSearch extends Rental
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $userId,
-            'user_id' => $this->user_id,
+            'id' => $this->id,
+            'user_id' => $userId,
             'car_id' => $this->car_id,
             'rent_start' => $this->rent_start,
             'rent_end' => $this->rent_end,

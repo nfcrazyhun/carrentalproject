@@ -12,7 +12,8 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
+<!--    <//?= $form->field($model, 'user_id')->textInput() ?>-->
+    <?= $form->field($model, 'user_id')->hiddenInput(['value'=>Yii::$app->user->getId()])->label(false); ?>
 
     <?= $form->field($model, 'car_id')->textInput() ?>
 
@@ -20,7 +21,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'rent_end')->textInput() ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+<!--    <//?= $form->field($model, 'created_at')->textInput() ?>-->
 
     <?= $form->field($model, 'modified_at')->textInput() ?>
 
