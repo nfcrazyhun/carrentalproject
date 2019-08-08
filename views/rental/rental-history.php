@@ -48,10 +48,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{view} {delete} {cancel}',
+                'template' => '{view} {cancel}',
                 'buttons' => [
                     'cancel' => function ($url, $model, $key) {
-                        return Html::a ( '<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> ', ['cancel', 'id' => $model->id] );
+                        if($model->status != \app\models\Rental::STATUS_CANCELED){
+                            return Html::a ( '<span class="glyphicon glyphicon-hand-down" aria-hidden="true" title="Cancel"></span> ', ['cancel', 'id' => $model->id] );
+                        }
                     },
                 ],
             ],

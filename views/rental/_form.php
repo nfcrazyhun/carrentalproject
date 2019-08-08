@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Car;
+use kartik\datetime\DateTimePicker;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -19,9 +20,22 @@ use yii\widgets\ActiveForm;
 
 <!--    <// $form->field($model, 'car_id')->textInput() ?>-->
 
-    <?= $form->field($model, 'car_id',)->label('Car')->dropDownList(ArrayHelper::map(Car::find()->all(),'id','carfullname'),['prompt'=>'Select Car']) ?>
+    <?= $form->field($model, 'car_id')->label('Car')->dropDownList(ArrayHelper::map(Car::find()->all(),'id','carfullname'),['prompt'=>'Select Car']) ?>
 
     <?= $form->field($model, 'rent_start')->textInput() ?>
+
+    <?php
+    echo '<label class="control-label">Event Time Start</label>';
+    echo DateTimePicker::widget([
+        'name' => 'dp_1',
+        'type' => DateTimePicker::TYPE_COMPONENT_PREPEND,
+        'value' => date('Y F d H:i'),
+        'pluginOptions' => [
+            'autoclose' => true,
+            'format' => 'yyyy MM dd hh:ii'
+        ]
+    ]);
+    ?>
 
     <?= $form->field($model, 'rent_end')->textInput() ?>
 

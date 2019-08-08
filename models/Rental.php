@@ -22,6 +22,11 @@ use Yii;
  */
 class Rental extends \yii\db\ActiveRecord
 {
+    //define status constants
+    const STATUS_ACTIVE = 1;
+    const STATUS_FINISHED = 2;
+    const STATUS_CANCELED = 3;
+
     /**
      * {@inheritdoc}
      */
@@ -83,13 +88,13 @@ class Rental extends \yii\db\ActiveRecord
         $statusText = null;
 
         switch ($statusCode) {
-            case 1:
+            case self::STATUS_ACTIVE:
                 $statusText = 'Active';
                 break;
-            case 2:
+            case self::STATUS_FINISHED:
                 $statusText = 'Finished';
                 break;
-            case 3:
+            case self::STATUS_CANCELED:
                 $statusText = 'Canceled';
                 break;
             default:

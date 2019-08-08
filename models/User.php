@@ -24,9 +24,13 @@ use yii\web\IdentityInterface;
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
 
+    //define role constants
     const ROLE_USER = 0;
     const ROLE_ADMIN = 1;
 
+    //define status constants
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
 
     /**
      * {@inheritdoc}
@@ -183,10 +187,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         $statusText = null;
 
         switch ($statusCode) {
-            case 1:
+            case self::STATUS_ACTIVE:
                 $statusText = 'Active';
                 break;
-            case 2:
+            case self::STATUS_INACTIVE:
                 $statusText = 'Inactive';
                 break;
             default:

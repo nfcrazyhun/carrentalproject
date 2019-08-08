@@ -22,6 +22,12 @@ use Yii;
  */
 class Car extends \yii\db\ActiveRecord
 {
+    //define status constants
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
+    const STATUS_BROKEN = 3;
+    const STATUS_REMOVER = 4;
+
     /**
      * {@inheritdoc}
      */
@@ -83,16 +89,16 @@ class Car extends \yii\db\ActiveRecord
         $statusText = null;
 
         switch ($statusCode) {
-            case 1:
+            case self::STATUS_ACTIVE:
                 $statusText = 'Active';
                 break;
-            case 2:
+            case self::STATUS_INACTIVE:
                 $statusText = 'Inactive';
                 break;
-            case 3:
+            case self::STATUS_BROKEN:
                 $statusText = 'Broken';
                 break;
-            case 4:
+            case self::STATUS_REMOVER:
                 $statusText = 'Removed';
                 break;
             default:
