@@ -49,7 +49,7 @@ class m190804_123444_database_seeder extends Migration
             'odometer' => 132000,
             'reg_no' => 'tya-001',
             'rate' => 3000,
-            'status' => 1,
+            'status' => 2,
         ]);
 
         $this->insert('car', [
@@ -59,7 +59,7 @@ class m190804_123444_database_seeder extends Migration
             'odometer' => 75000,
             'reg_no' => 'tya-002',
             'rate' => 3000,
-            'status' => 1,
+            'status' => 3,
         ]);
 
         $this->insert('car', [
@@ -69,7 +69,7 @@ class m190804_123444_database_seeder extends Migration
             'odometer' => 195000,
             'reg_no' => 'hda-001',
             'rate' => 5000,
-            'status' => 1,
+            'status' => 4,
         ]);
 
         $this->insert('car', [
@@ -99,7 +99,7 @@ class m190804_123444_database_seeder extends Migration
             'odometer' => 232000,
             'reg_no' => 'nsn-002',
             'rate' => 6000,
-            'status' => 3,
+            'status' => 1,
         ]);
 
         $this->insert('car', [

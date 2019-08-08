@@ -71,9 +71,9 @@ AppAsset::register($this);
                     ['label' => '🧙‍ Users', 'url' => ['/user'],'active' => $this->context->route == 'user/index'],
 
                     '<li class="dropdown-header">View Reports</li>',
-                    ['label' => '🚓 Car usage', 'url' => ['/car'], 'active' => $this->context->route == 'car/index'],
-                    ['label' => '💲 Incomes', 'url' => ['/car'], 'active' => $this->context->route == 'car/index'],
-                    ['label' => '🚓 Wrecks', 'url' => ['/car'], 'active' => $this->context->route == 'car/index'],
+                    ['label' => '🎏 Car usage', 'url' => ['/car'], 'active' => $this->context->route == 'car/index'],
+                    ['label' => '💱 Incomes', 'url' => ['/car'], 'active' => $this->context->route == 'car/index'],
+                    ['label' => '🔨 Wrecks', 'url' => ['/car/wreck'], 'active' => $this->context->route == 'car/index'],
                 ],
             ]) : (''),
 
