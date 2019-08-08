@@ -99,7 +99,7 @@ class m190804_123444_database_seeder extends Migration
             'odometer' => 232000,
             'reg_no' => 'nsn-002',
             'rate' => 6000,
-            'status' => 1,
+            'status' => 3,
         ]);
 
         $this->insert('car', [
@@ -109,7 +109,7 @@ class m190804_123444_database_seeder extends Migration
             'odometer' => 155000,
             'reg_no' => 'sbr-001',
             'rate' => 8000,
-            'status' => 1,
+            'status' => 3,
         ]);
 
         //insert rental

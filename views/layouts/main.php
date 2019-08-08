@@ -47,23 +47,35 @@ AppAsset::register($this);
             ['label' => '📝 Signup', 'url' => ['/site/signup']]
             ):(''),
 
+
+            //user rental stuff
+            Yii::$app->user->getId() ? (
+            [
+                'label' => '🚌 Rentals',
+                'items' => [
+                    '<li class="dropdown-header">Manage rentals</li>',
+                    ['label' => '💺 New Rental', 'url' => ['/rental/create']],
+                    ['label' => '📝 My Rental History', 'url' => ['/rental/rental-history']],
+                ]
+            ]) : (''),
+
             //admin buttons
-                    Yii::$app->user->getId() && Yii::$app->user->identity->isUserAdmin(Yii::$app->user->getId()) === true ? (
-                    ['label' => '🚓 Cars', 'url' => ['/car'],'active' => $this->context->route == 'car/index']
-                    ):(''),
-                    Yii::$app->user->getId() && Yii::$app->user->identity->isUserAdmin(Yii::$app->user->getId()) === true ? (
-                    ['label' => '🏎️ Rentals', 'url' => ['/rental'],'active' => $this->context->route == 'rental/index']
-                    ):(''),
-                    Yii::$app->user->getId() && Yii::$app->user->identity->isUserAdmin(Yii::$app->user->getId()) === true ? (
-                    ['label' => '🧙‍️ Users', 'url' => ['/user'],'active' => $this->context->route == 'user/index']
-                    ):(''),
+            Yii::$app->user->getId() && Yii::$app->user->identity->isUserAdmin(
+                    Yii::$app->user->getId()) === true ? (
+            [
+                'label' => '⚙️Admin Stuff',
+                'items' => [
+                    '<li class="dropdown-header">Manage...</li>',
+                    ['label' => '🚓 Cars', 'url' => ['/car'],'active' => $this->context->route == 'car/index'],
+                    ['label' => '🏎️ Rentals', 'url' => ['/rental'],'active' => $this->context->route == 'rental/index'],
+                    ['label' => '🧙‍ Users', 'url' => ['/user'],'active' => $this->context->route == 'user/index'],
 
-
-
-                    Yii::$app->user->getId() ? (
-                    ['label' => '💬 Rental History', 'url' => ['/rental/rental-history']]
-                    ):(''),
-
+                    '<li class="dropdown-header">View Reports</li>',
+                    ['label' => '🚓 Car usage', 'url' => ['/car'], 'active' => $this->context->route == 'car/index'],
+                    ['label' => '💲 Incomes', 'url' => ['/car'], 'active' => $this->context->route == 'car/index'],
+                    ['label' => '🚓 Wrecks', 'url' => ['/car'], 'active' => $this->context->route == 'car/index'],
+                ],
+            ]) : (''),
 
             Yii::$app->user->isGuest ? (
             ['label' => '🔑 Login', 'url' => ['/site/login']]
