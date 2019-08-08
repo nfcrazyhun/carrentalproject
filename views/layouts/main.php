@@ -66,14 +66,14 @@ AppAsset::register($this);
                 'label' => '⚙️Admin Stuff',
                 'items' => [
                     '<li class="dropdown-header">Manage...</li>',
-                    ['label' => '🚓 Cars', 'url' => ['/car'],'active' => $this->context->route == 'car/index'],
-                    ['label' => '🏎️ Rentals', 'url' => ['/rental'],'active' => $this->context->route == 'rental/index'],
-                    ['label' => '🧙‍ Users', 'url' => ['/user'],'active' => $this->context->route == 'user/index'],
+                    ['label' => '🚓 Cars', 'url' => ['/car/index']],
+                    ['label' => '🏎️ Rentals', 'url' => ['/rental/index']],
+                    ['label' => '🧙‍ Users', 'url' => ['/user/index']],
 
                     '<li class="dropdown-header">View Reports</li>',
-                    ['label' => '🎏 Car usage', 'url' => ['/car'], 'active' => $this->context->route == 'car/index'],
-                    ['label' => '💱 Incomes', 'url' => ['/car'], 'active' => $this->context->route == 'car/index'],
-                    ['label' => '🔨 Wrecks', 'url' => ['/car/wreck'], 'active' => $this->context->route == 'car/index'],
+                    ['label' => '🎏 Car usage', 'url' => ['/car/index']],
+                    ['label' => '💱 Incomes', 'url' => ['/car/index']],
+                    ['label' => '🔨 Wrecks', 'url' => ['/car/wreck']],
                 ],
             ]) : (''),
 

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Car;
 use app\models\User;
 use yii\filters\AccessControl;
 use Yii;
@@ -129,7 +130,7 @@ class RentalController extends Controller
     {
         $model = $this->findModel($id);
 
-        $model->status = 3;
+        $model->status = Rental::STATUS_CANCELED;
 
         $model->save();
 
@@ -163,5 +164,19 @@ class RentalController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+
+    public function actionBreakdowncar($id)
+    {
+        $rentalModel = $this->findModel($id);
+
+        $carModel = Car::findOne($rentalModel->car_id);
+
+        $carModel->status = Car::STATUS_BROKEN;
+
+        $carModel->save();
+
+        return $this->redirect(['rental/rental-history']);
     }
 }

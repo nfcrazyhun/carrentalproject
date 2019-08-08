@@ -153,4 +153,15 @@ class CarController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
+    public function actionRestorecarbacktofleet($id)
+    {
+        $model = $this->findModel($id);
+
+        $model->status = Car::STATUS_ACTIVE;
+
+        $model->save();
+
+        return $this->redirect(['car/index']);
+    }
 }
