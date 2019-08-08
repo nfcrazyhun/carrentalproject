@@ -48,7 +48,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{view} {delete}',
+                'template' => '{view} {delete} {cancel}',
+                'buttons' => [
+                    'cancel' => function ($url, $model, $key) {
+                        return Html::a ( '<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> ', ['cancel', 'id' => $model->id] );
+                    },
+                ],
             ],
         ],
     ]); ?>

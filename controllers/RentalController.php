@@ -125,6 +125,17 @@ class RentalController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionCancel($id)
+    {
+        $model = $this->findModel($id);
+
+        $model->status = 3;
+
+        $model->save();
+
+        return $this->redirect(['rental/rental-history']);
+    }
+
     /**
      * Finds the Rental model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
