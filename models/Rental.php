@@ -46,6 +46,8 @@ class Rental extends \yii\db\ActiveRecord
             [['comment'], 'string'],
             [['car_id'], 'exist', 'skipOnError' => true, 'targetClass' => Car::className(), 'targetAttribute' => ['car_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
+            [['car_id'], 'required'],
+            [['rent_start', 'rent_end'], 'required']
         ];
     }
 

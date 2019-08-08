@@ -22,22 +22,44 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'car_id')->label('Car')->dropDownList(ArrayHelper::map(Car::find()->all(),'id','carfullname'),['prompt'=>'Select Car']) ?>
 
-    <?= $form->field($model, 'rent_start')->textInput() ?>
+<!--    <//?= $form->field($model, 'rent_start')->textInput() ?>-->
 
     <?php
+    $model->rent_start = date('Y-m-d H:i:00');
     echo '<label class="control-label">Event Time Start</label>';
     echo DateTimePicker::widget([
-        'name' => 'dp_1',
+        'model' => $model,
+        'attribute' => 'rent_start',
+        'name' => 'rent_start',
         'type' => DateTimePicker::TYPE_COMPONENT_PREPEND,
-        'value' => date('Y F d H:i'),
+        'value' => date('Y-m-d H:i:00'),
+        'options' => ['placeholder' => 'Enter start time ...'],
         'pluginOptions' => [
             'autoclose' => true,
-            'format' => 'yyyy MM dd hh:ii'
+            'format' => 'yyyy-mm-dd hh:ii',
+            'startDate' => date("Y-m-d"),
         ]
     ]);
     ?>
 
-    <?= $form->field($model, 'rent_end')->textInput() ?>
+<!--    <//?= $form->field($model, 'rent_end')->textInput() ?>-->
+
+    <?php
+    echo '<label class="control-label">Event Time END</label>';
+    echo DateTimePicker::widget([
+        'model' => $model,
+        'attribute' => 'rent_end',
+        'type' => DateTimePicker::TYPE_COMPONENT_PREPEND,
+        //'value' => date('Y-m-d H:i'),
+        'options' => ['placeholder' => 'Enter end time ...'],
+        'pluginOptions' => [
+            'autoclose' => true,
+            'format' => 'yyyy-mm-dd hh:ii',
+            'startDate' => date('Y-m-d'),
+        ]
+    ]);
+    ?>
+
 
 <!--    <//?= $form->field($model, 'created_at')->textInput() ?>-->
 
