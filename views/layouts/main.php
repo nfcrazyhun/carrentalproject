@@ -53,6 +53,8 @@ AppAsset::register($this);
             [
                 'label' => '🚌 Rentals',
                 'items' => [
+                    '<li class="dropdown-header">Our fleet</li>',
+                    ['label' => '🚗 Available cars', 'url' => ['/car/index']],
                     '<li class="dropdown-header">Manage rentals</li>',
                     ['label' => '💺 New Rental', 'url' => ['/rental/create']],
                     ['label' => '📝 My Rental History', 'url' => ['/rental/rental-history']],
