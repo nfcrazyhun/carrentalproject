@@ -24,10 +24,10 @@ class RentalController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index','view','update','delete'],
+                'only' => ['index','update','delete'],
                 'rules' => [
                     [
-                        'actions' => ['index','view','update','delete'],
+                        'actions' => ['index','update','delete'],
                         'allow' => true,
                         'roles' => ['@'],
                         'matchCallback' => function ($rule, $action) {
