@@ -70,6 +70,7 @@ class Car extends \yii\db\ActiveRecord
     }
 
     /**
+     *
      * @return \yii\db\ActiveQuery
      */
     public function getRentals()
@@ -77,6 +78,11 @@ class Car extends \yii\db\ActiveRecord
         return $this->hasMany(Rental::className(), ['car_id' => 'id']);
     }
 
+    /**
+     * Translate car_ids into car names
+     * eg Toyota Corolla (1985)
+     * @return string
+     */
     public function getCarFullName(){
 
         $format = '%s %s (%d) | Price: %d';
@@ -84,6 +90,11 @@ class Car extends \yii\db\ActiveRecord
         return sprintf($format,$this->brand,$this->model,$this->year, $this->rate);
     }
 
+
+    /**
+     * Get car's price
+     * @return string
+     */
     public function getCarPrice(){
 
         $format = "%d";
@@ -92,8 +103,10 @@ class Car extends \yii\db\ActiveRecord
     }
 
 
-
-
+    /**
+     * Write proper status labels instead of ids
+     * @return string|null
+     */
     public function getCarStatus(){
         $statusCode = $this->status;
         $statusText = null;

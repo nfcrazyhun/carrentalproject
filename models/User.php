@@ -160,6 +160,11 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
 
     //from LoginForm
+    /**
+     * Finds user by name
+     * @param $username
+     * @return User|null
+     */
     public static function findByUsername($username){
         return self::findOne(['username'=>$username]);
     }
@@ -182,6 +187,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return false;
     }
 
+    /**
+     * Write proper status labels instead of ids
+     * @return string|null
+     */
     public function getRentalStatus(){
         $statusCode = $this->status;
         $statusText = null;
@@ -200,6 +209,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return $statusText;
     }
 
+    /**
+     * Write proper status labels instead of ids
+     * @return string|null
+     */
     public function getUserStatus(){
         $statusCode = $this->status;
         $statusText = null;
@@ -218,6 +231,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return $statusText;
     }
 
+    /**
+     * Write proper status labels instead of ids
+     * @return string|null
+     */
     public function getUserRole(){
         $roleCode = $this->role;
         $roleText = null;

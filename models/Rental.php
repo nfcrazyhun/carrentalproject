@@ -88,6 +88,10 @@ class Rental extends \yii\db\ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
+    /**
+     * Write proper status labels instead of ids
+     * @return string|null
+     */
     public function getRentalStatus(){
         $statusCode = $this->status;
         $statusText = null;
