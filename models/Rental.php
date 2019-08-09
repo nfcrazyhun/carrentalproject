@@ -27,6 +27,9 @@ class Rental extends \yii\db\ActiveRecord
     const STATUS_FINISHED = 2;
     const STATUS_CANCELED = 3;
 
+    //define base rental price
+    const RENTAL_BASE_PRICE = 10000;
+
     /**
      * {@inheritdoc}
      */
