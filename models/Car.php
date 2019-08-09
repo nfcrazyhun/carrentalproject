@@ -79,10 +79,20 @@ class Car extends \yii\db\ActiveRecord
 
     public function getCarFullName(){
 
-        $format = '%s %s (%d)';
+        $format = '%s %s (%d) | Price: %d';
 
-        return sprintf($format,$this->brand,$this->model,$this->year);
+        return sprintf($format,$this->brand,$this->model,$this->year, $this->rate);
     }
+
+    public function getCarPrice(){
+
+        $format = "%d";
+
+        return sprintf($format, $this->rate);
+    }
+
+
+
 
     public function getCarStatus(){
         $statusCode = $this->status;

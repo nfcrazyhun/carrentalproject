@@ -20,9 +20,20 @@ use yii\widgets\ActiveForm;
 
 <!--    <// $form->field($model, 'car_id')->textInput() ?>-->
 
-    <?= $form->field($model, 'car_id')->label('Car')->dropDownList(ArrayHelper::map(Car::find()->all(),'id','carfullname'),['prompt'=>'Select a Car']) ?>
+    <!--<//?= $form->field($model, 'car_id')->label('Car')->dropDownList(ArrayHelper::map(Car::find()->all(),'id','carfullname'),['prompt'=>'Select a Car']) ?>-->
 
-<!--    <//?= $form->field($model, 'rent_start')->textInput() ?>-->
+    <?= $form->field($model, 'car_id')->
+    label('Car')->
+    dropDownList(ArrayHelper::map(Car::find()->all(),'id','carfullname'),['prompt'=>'Select a Car', 'onChange'=>'calcForm(this.form)']) ?>
+
+
+
+
+
+
+    <!--    <//?= $form->field($model, 'rent_start')->textInput() ?>-->
+
+
 
     <?php
     $model->rent_start = date('Y-m-d H:i:00');
@@ -59,8 +70,8 @@ use yii\widgets\ActiveForm;
         ]
     ]);
     ?>
-
-
+    <label class="control-label" for="sum_day">Number of Days</label><br>
+        <input id="sum_day" value="" disabled>
 <!--    <//?= $form->field($model, 'created_at')->textInput() ?>-->
 
 <!--    <//?= $form->field($model, 'modified_at')->textInput() ?>-->
@@ -109,12 +120,15 @@ use yii\widgets\ActiveForm;
 // By making the first element 0, this associates the list precisely with the select list.
 // To maintain all you need to do is change this array.
         var prices = [
-            '0.00',
-            '140.40',
-            '206.40',
-            '272.40',
-            '338.40'];
-        var sel = document.getElementById('num'); // The list
+'0','0'
+<?php foreach (ArrayHelper::map(Car::find()->all(),'id','carprice') as $price) { ?>
+, '<?= $price ?>'
+<?php
+
+            }
+?>
+        ];
+        var sel = document.getElementById('rental-car_id'); // The list
         var ind = sel.selectedIndex; // What's selected
         var total = document.getElementById('total');
         total.value = prices[sel[ind].value]; // the correlating value from the array
@@ -122,5 +136,3 @@ use yii\widgets\ActiveForm;
         if (submit_it) { form.submit(); }
     }
 </script>
-
-
