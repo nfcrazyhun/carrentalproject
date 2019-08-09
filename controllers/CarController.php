@@ -148,7 +148,20 @@ class CarController extends Controller
         //extra parameter:filter where status = broker
         $dataProvider->query->andWhere(['status'=>Car::STATUS_BROKEN]);
 
-        return $this->render('index', [
+        return $this->render('wreck', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionAvailable()
+    {
+        $searchModel = new CarSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        //extra parameter:filter where status = active
+        $dataProvider->query->andWhere(['status'=>Car::STATUS_ACTIVE]);
+
+        return $this->render('available', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
