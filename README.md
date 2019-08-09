@@ -12,7 +12,7 @@ $ composer u -o
 
 name: car_rental_db
 
-encode: utf8_unicode_ci
+encode: utf8mb4_unicode_ci
 
 ### Set up virtual host (eg. with Wampserver),
 
