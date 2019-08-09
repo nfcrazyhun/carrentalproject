@@ -116,7 +116,8 @@ class CarController extends Controller
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws
+     * NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
     {
@@ -141,6 +142,10 @@ class CarController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
+    /**
+     * Lists all Car models which ones is broken
+     * @return mixed
+     */
     public function actionWreck()
     {
         $searchModel = new CarSearch();
@@ -154,6 +159,10 @@ class CarController extends Controller
         ]);
     }
 
+    /**
+     * Lists all Car models which ones is available to rent
+     * @return mixed
+     */
     public function actionAvailable()
     {
         $searchModel = new CarSearch();
@@ -167,6 +176,13 @@ class CarController extends Controller
         ]);
     }
 
+
+    /**
+     * Restore car which one has been repaired
+     * @param $id
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException
+     */
     public function actionRestorecarbacktofleet($id)
     {
         $model = $this->findModel($id);

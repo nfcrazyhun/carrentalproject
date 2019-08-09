@@ -126,6 +126,13 @@ class RentalController extends Controller
         return $this->redirect(['index']);
     }
 
+
+    /**
+     * Cancels a rental
+     * @param $id
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException
+     */
     public function actionCancel($id)
     {
         $model = $this->findModel($id);
@@ -153,6 +160,10 @@ class RentalController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
+    /**
+     * Lists user's all past rentals
+     * @return mixed
+     */
     public function actionRentalHistory()
     {
         $searchModel = new RentalSearch();
@@ -167,6 +178,12 @@ class RentalController extends Controller
     }
 
 
+    /**
+     * Change car status to broken
+     * @param $id
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException
+     */
     public function actionBreakdowncar($id)
     {
         $rentalModel = $this->findModel($id);

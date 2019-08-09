@@ -14,7 +14,7 @@ name: car_rental_db
 
 encode: utf8mb4_unicode_ci
 
-### Set up virtual host (eg. with Wampserver),
+### Set up virtual host (eg. with WampServer),
 
 ServerName :  carrent1
 
@@ -32,7 +32,7 @@ $ php yii migrate
 
 ## Note
 
-The project made with the following verions:
+The project made with the following versions:
 - PHP 7.3.8
 - MySQL 8.0.17
 - Yii 2.0.24 (Framework)
