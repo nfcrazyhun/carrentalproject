@@ -24,7 +24,7 @@ Directory :  c:/wamp64/www/carrent1/web
 ```
 $ php yii migrate
 ```
-### The application comes with default admin.
+### The application comes with default admin:
 
 -   username: teszt1
 -   password: teszt1
@@ -35,6 +35,7 @@ $ php yii migrate
 The project made with the following verions:
 - PHP 7.3.8
 - MySQL 8.0.17
+- Yii 2.0.24 (Framework)
 
 #### If notice notice any problem during installation please follow the detailed official guide [Link below]
 
