@@ -7,15 +7,21 @@ $ git clone https://github.com/nfcrazyhun/carrentalproject carrent1
 $ composer install
 $ composer u -o
 ```
-Create a database for the app
+###Create a database for the app
+
 name: car_rental_db
+
 encode: utf8_unicode_ci
 
-Set up virtual host (eg. with Wampserver) and modify the httpd-vhosts.conf
+###Set up virtual host (eg. with Wampserver),
+
 ServerName :  carrent1
+
 Directory :  c:/wamp64/www/carrent1/web
 
-Example below
+###then modify the httpd-vhosts.conf:
+
+Example below, details
 ```
 #httpd-vhosts.conf
 #carrent1
@@ -45,11 +51,11 @@ Example below
 ```
 
 
-Set up tables and demo records
+###Set up tables and demo records
 ```
 $ php yii migrate
 ```
-The application comes with default admin.
+###The application comes with default admin.
 
 -   username: teszt1
 -   password: teszt1
@@ -61,7 +67,7 @@ The project made with the following verions:
 - PHP 7.3.8
 - MySQL 8.0.17
 
-If notice notice any problem during installation please follow the detailed official guide [Link below]
+####If notice notice any problem during installation please follow the detailed official guide [Link below]
 
 -   The minimum required PHP version of Yii is PHP 5.4.
 -   It works best with PHP 7.
