@@ -200,4 +200,40 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return $statusText;
     }
 
+    public function getUserStatus(){
+        $statusCode = $this->status;
+        $statusText = null;
+
+        switch ($statusCode) {
+            case self::STATUS_ACTIVE:
+                $statusText = 'Active';
+                break;
+            case self::STATUS_INACTIVE:
+                $statusText = 'Inactive';
+                break;
+            default:
+                $statusText = null;
+        }
+
+        return $statusText;
+    }
+
+    public function getUserRole(){
+        $roleCode = $this->role;
+        $roleText = null;
+
+        switch ($roleCode) {
+            case self::ROLE_USER:
+                $roleText = 'User';
+                break;
+            case self::ROLE_ADMIN:
+                $roleText = 'Admin';
+                break;
+            default:
+                $roleText = null;
+        }
+
+        return $roleText;
+    }
+
 }

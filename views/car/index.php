@@ -44,7 +44,11 @@ $this->params['breadcrumbs'][] = $this->title;
             //'rate',
             //'created_at',
             //'modified_at',
-            'status',
+            [
+                'attribute' => 'status',
+                'label' => 'Status',
+                'value' => 'carstatus',
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -160,7 +160,7 @@ class RentalController extends Controller
         //extra parameter:filter where user_id = current user's id
         $dataProvider->query->andWhere(['user_id'=> Yii::$app->user->getId()]);
 
-        return $this->render('index', [
+        return $this->render('rental-history', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

@@ -18,8 +18,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Rental', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -36,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'rent_start',
             'rent_end',
-            //'created_at',
+            'created_at',
             //'modified_at',
             //'comment:ntext',
             //'status',
