@@ -176,7 +176,6 @@ class CarController extends Controller
         ]);
     }
 
-
     /**
      * Restore car which one has been repaired
      * @param $id
@@ -192,5 +191,18 @@ class CarController extends Controller
         $model->save();
 
         return $this->redirect(['car/index']);
+    }
+
+    public function actionListcarprice($id)
+    {
+        $carModels = Car::find()->where(['id'=>$id])->all();
+        $countcar = Car::find()->where(['id'=>$id])->count();
+
+        if ($countcar > 0) {
+            foreach ($carModels as $item) {
+                echo $item->rate;
+            }
+        }
+
     }
 }

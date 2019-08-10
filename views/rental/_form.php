@@ -13,7 +13,9 @@ use yii\widgets\ActiveForm;
 
 <div class="rental-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(
+            ['enableAjaxValidation' => true,]
+    ); ?>
 
 <!--    <//?= $form->field($model, 'user_id')->textInput() ?>-->
     <?= $form->field($model, 'user_id')->hiddenInput(['value'=>Yii::$app->user->getId()])->label(false); ?>
@@ -22,9 +24,8 @@ use yii\widgets\ActiveForm;
 
     <!--<//?= $form->field($model, 'car_id')->label('Car')->dropDownList(ArrayHelper::map(Car::find()->all(),'id','carfullname'),['prompt'=>'Select a Car']) ?>-->
 
-    <?= $form->field($model, 'car_id')->
-    label('Car')->
-    dropDownList(ArrayHelper::map(Car::find()->all(),'id','carfullname'),['prompt'=>'Select a Car', 'onChange'=>'calcForm(this.form)']) ?>
+
+    <?= $form->field($model, 'car_id')->label('Car')->dropDownList(Car::getCarDropdownList(), ['prompt'=>'Select a Car']) ?>
 
 
 
@@ -72,7 +73,10 @@ use yii\widgets\ActiveForm;
     ?>
     <label class="control-label" for="sum_day">Number of Days</label><br>
         <input id="sum_day" value="" disabled>
-<!--    <//?= $form->field($model, 'created_at')->textInput() ?>-->
+
+    <br><label class="control-label" for="total">Total Price: </label><br><input type="text" name="total" id="total" size="6" value="0" onfocus="blur();" disabled>
+
+    <!--    <//?= $form->field($model, 'created_at')->textInput() ?>-->
 
 <!--    <//?= $form->field($model, 'modified_at')->textInput() ?>-->
 
@@ -86,10 +90,11 @@ use yii\widgets\ActiveForm;
     <div class="potential-price">
 
         <ul>
-            <li>Base price: <?= \app\models\Rental::RENTAL_BASE_PRICE; ?></li>
-            <li>Car cost per day: <?php  //ajax call echo actionCarcostperday($model->car_id); ?></li>
-            <li>Car rental cost in period: <?php //ajax call echo $model->car_id; ?></li>
-            <li>Sum: <?php //ajax call echo Car::calcCarSumCost(); ?></li>
+            <li>Base price: <input disabled type="text" name="baseprice" value="<?= \app\models\Rental::RENTAL_BASE_PRICE; ?>"></li>
+            <li>Car's cost per day: <input disabled type="text" name="costperday" >
+            <li>Number of days: <input disabled type="text" name="numberofdays" ></li>
+            <li>Car rental cost in period: <input disabled type="text" name="costinoeriod" ></li>
+            <li>Sum of costs: <input disabled type="text" name="sumofcosts" ></li>
         </ul>
     </div>
 
@@ -102,18 +107,8 @@ use yii\widgets\ActiveForm;
 </div>
 <script src="../js/ckeditor/ckeditor.js"></script>
 
-<form method="post" action="You_will_still_need_recalculation_server_side.cgi" name="calc" id="calc" onSubmit="return false;">
-    <p>Select the number of participants and continue.</p>
-    <select name="num" id="num" onChange="calcForm(this.form);">
-        <option value="0">Please Select</option>
-        <option value="1">1 - 140.40 euros</option>
-        <option value="2">2 - 206.40 euros</option>
-        <option value="3">3 - 272.40 euros</option>
-        <option value="4">4 - 338.40 euros</option>
-    </select>
-    Total: <strong>$</strong> <input type="text" name="total" id="total" size="6" value="0.00" onfocus="blur();">
-    <input type="submit" name="submitButton" id="submitButton" onClick="calcForm(this.form,1);" value="Continue &gt;&gt;">
-</form>
+
+
 
 <script type="text/javascript">
     function calcForm(form,submit_it) {
@@ -135,4 +130,21 @@ use yii\widgets\ActiveForm;
         if (ind == 0) { return; }
         if (submit_it) { form.submit(); }
     }
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+    // A $( document ).ready() block.
+    $( document ).ready(function() {
+        console.log( "ready!" );
+        //alert("Hello! I am an alert box!!");
+
+        $("#rental-car_id").change(function () {
+            let $selected = $(this).val();   //get selected car id
+            console.log("Selected car id: "+$selected);
+        )
+    });
+
 </script>

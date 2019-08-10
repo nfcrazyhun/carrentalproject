@@ -28,6 +28,8 @@ class Car extends \yii\db\ActiveRecord
     const STATUS_BROKEN = 3;
     const STATUS_REMOVER = 4;
 
+    private static $carNameFormat = '%s %s (%d) | Price: %d';
+
     /**
      * {@inheritdoc}
      */
@@ -79,15 +81,32 @@ class Car extends \yii\db\ActiveRecord
     }
 
     /**
+     * Get all car model and return it to the dropdown list as array
+     * @return mixed
+     */
+    public static function getCarDropdownList()
+    {
+        static $dropdown = [];
+        $models = Car::find()->all();
+
+        foreach ($models as $model) {
+            $dropdown[$model->id] = sprintf(self::$carNameFormat,
+                                                $model->brand,
+                                                $model->model,
+                                                $model->year,
+                                                $model->rate);
+        }
+        return $dropdown;
+    }
+
+    /**
      * Translate car_ids into car names
      * eg Toyota Corolla (1985)
      * @return string
      */
-    public function getCarFullName(){
-
-        $format = '%s %s (%d) | Price: %d';
-
-        return sprintf($format,$this->brand,$this->model,$this->year, $this->rate);
+    public function getCarFullName()
+    {
+        return sprintf(self::$carNameFormat, $this->brand, $this->model, $this->year, $this->rate);
     }
 
 
