@@ -74,7 +74,7 @@ AppAsset::register($this);
 
                     '<li class="dropdown-header">View Reports</li>',
                     ['label' => '🎏 Car usage', 'url' => ['/car/index']],
-                    ['label' => '💱 Incomes', 'url' => ['/car/index']],
+                    ['label' => '💱 Incomes', 'url' => ['/rental/income']],
                     ['label' => '🛠️ Wrecks', 'url' => ['/car/wreck']],
                 ],
             ]) : (''),

@@ -177,6 +177,19 @@ class RentalController extends Controller
         ]);
     }
 
+    public function actionIncome()
+    {
+        $searchModel = new RentalSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('income', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+
+
+    }
+
 
     /**
      * Change car status to broken
