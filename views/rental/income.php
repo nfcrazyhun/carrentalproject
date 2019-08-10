@@ -2,7 +2,6 @@
 
 use kartik\date\DatePicker;
 use yii\helpers\Html;
-use yii\grid\GridView;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -20,13 +19,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
     <?php
-    /*
-    echo $form = ActiveForm::begin();
+
+    $form = ActiveForm::begin([]);
     echo '<label class="control-label">Select date range</label>';
     echo DatePicker::widget([
         'model' => $model,
-        'attribute' => 'from_date',
-        'attribute2' => 'to_date',
+        'attribute' => 'rent_start',
+        'attribute2' => 'rent_end',
         'options' => ['placeholder' => 'Start date'],
         'options2' => ['placeholder' => 'End date'],
         'type' => DatePicker::TYPE_RANGE,
@@ -37,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]
     ]);
     ActiveForm::end();
-    */
+
     ?>
 
 

@@ -179,12 +179,15 @@ class RentalController extends Controller
 
     public function actionIncome()
     {
+        $model = new Rental();
+
         $searchModel = new RentalSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('income', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'model' => $model,
         ]);
 
 
