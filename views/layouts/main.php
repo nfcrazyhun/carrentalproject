@@ -79,6 +79,7 @@ AppAsset::register($this);
                 ],
             ]) : (''),
 
+            //logout button
             Yii::$app->user->isGuest ? (
             ['label' => '🔑 Login', 'url' => ['/site/login']]
             ) : (
