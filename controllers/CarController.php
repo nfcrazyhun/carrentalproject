@@ -176,6 +176,17 @@ class CarController extends Controller
         ]);
     }
 
+    public function actionUsage()
+    {
+        $searchModel = new CarSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('usage', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     /**
      * Restore car which one has been repaired
      * @param $id
