@@ -71,11 +71,6 @@ use yii\widgets\ActiveForm;
         ]
     ]);
     ?>
-    <label class="control-label" for="sum_day">Number of Days</label><br>
-        <input id="sum_day" value="" disabled>
-
-    <br><label class="control-label" for="total">Total Price: </label><br><input type="text" name="total" id="total" size="6" value="0" onfocus="blur();" disabled>
-
     <!--    <//?= $form->field($model, 'created_at')->textInput() ?>-->
 
 <!--    <//?= $form->field($model, 'modified_at')->textInput() ?>-->
@@ -90,11 +85,11 @@ use yii\widgets\ActiveForm;
     <div class="potential-price">
 
         <ul>
-            <li>Base price: <input disabled type="text" name="baseprice" value="<?= \app\models\Rental::RENTAL_BASE_PRICE; ?>"></li>
-            <li>Car's cost per day: <input disabled type="text" name="costperday" >
-            <li>Number of days: <input disabled type="text" name="numberofdays" ></li>
-            <li>Car rental cost in period: <input disabled type="text" name="costinoeriod" ></li>
-            <li>Sum of costs: <input disabled type="text" name="sumofcosts" ></li>
+            <li>Base price: <input disabled type="text" id="baseprice"></li>
+            <li>Car's cost per day: <input disabled type="text" id="costperday" >
+            <li>Number of days: <input disabled type="text" id="numberofdays" ></li>
+            <li>Car rental cost in period: <input disabled type="text" id="costinoeriod" ></li>
+            <li>Sum of costs: <input disabled type="text" id="sumofcosts" ></li>
         </ul>
     </div>
 
@@ -108,43 +103,34 @@ use yii\widgets\ActiveForm;
 <script src="../js/ckeditor/ckeditor.js"></script>
 
 
-
-
-<script type="text/javascript">
-    function calcForm(form,submit_it) {
-// By making the first element 0, this associates the list precisely with the select list.
-// To maintain all you need to do is change this array.
-        var prices = [
-'0','0'
-<?php foreach (ArrayHelper::map(Car::find()->all(),'id','carprice') as $price) { ?>
-, '<?= $price ?>'
-<?php
-
-            }
-?>
-        ];
-        var sel = document.getElementById('rental-car_id'); // The list
-        var ind = sel.selectedIndex; // What's selected
-        var total = document.getElementById('total');
-        total.value = prices[sel[ind].value]; // the correlating value from the array
-        if (ind == 0) { return; }
-        if (submit_it) { form.submit(); }
-    }
-</script>
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 
     // A $( document ).ready() block.
-    $( document ).ready(function() {
+    $(document).ready(function() {
         console.log( "ready!" );
-        //alert("Hello! I am an alert box!!");
+        let $selected = null;
 
         $("#rental-car_id").change(function () {
-            let $selected = $(this).val();   //get selected car id
-            console.log("Selected car id: "+$selected);
-        )
+            $selected = $(this).val();   //get selected car id
+            console.log("Selected car id: " + $selected);
+
+
+            $.get("/rental/ajaxcarprice", {id:$selected}, function ($data) {
+                //display name value which is returned from the action method
+                console.log("and its value: "+$data);
+                $data = jQuery.parseJSON($data);
+
+                $("#baseprice").val($data.basePrice);
+                $("#costperday").val($data.rate);
+                $("#numberofdays").val($data.numberOfDays);
+                $("#costinoeriod").val($data.costInPeriod);
+                $("#sumofcosts").val($data.sumOfCosts);
+
+            });
+
+        });
+
     });
 
 </script>

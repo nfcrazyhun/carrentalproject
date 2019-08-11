@@ -11,6 +11,7 @@ use app\models\search\RentalSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Json;
 
 /**
  * RentalController implements the CRUD actions for Rental model.
@@ -212,4 +213,29 @@ class RentalController extends Controller
 
         return $this->redirect(['rental/rental-history']);
     }
+
+    public function actionAjaxcarprice($id)
+    {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        $model = Car::findOne($id);
+        $basePrice = \app\models\Rental::RENTAL_BASE_PRICE;
+        $rate = $model->rate;
+        $numberOfDays = "Not implemented";
+        $costInPeriod = "Not implemented";
+        //$sumOfCosts = $basePrice+$rate+$numberOfDays+$costInPeriod;
+        $sumOfCosts = $basePrice+$rate;
+
+
+        $response["basePrice"] = $basePrice;
+        $response["rate"] = $rate;
+        $response["numberOfDays"] = $numberOfDays;
+        $response["costInPeriod"] = $costInPeriod;
+        $response["sumOfCosts"] = $sumOfCosts;
+
+        $response=Json::encode($response);
+
+        return $response;
+    }
+
 }
