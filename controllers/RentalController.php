@@ -215,7 +215,18 @@ class RentalController extends Controller
         return $this->redirect(['rental/rental-history']);
     }
 
-    public function actionAjaxcarprice($id,$sdate,$edate)
+    /**
+     * Ajax Response
+     * Get car id ,start date, end date, then
+     * returns calculated value to represent cost on rental create site
+     *
+     * @param $id
+     * @param $sdate
+     * @param $edate
+     * @return string JSON encoded
+     * @throws \Exception
+     */
+    public function actionAjaxcarprice($id, $sdate, $edate)
     {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
