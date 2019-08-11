@@ -110,14 +110,18 @@ use yii\widgets\ActiveForm;
     $(document).ready(function() {
         console.log( "ready!" );
         let $selected = null;
+        let $sdate = null;
+        let $edate = null;
 
         $("#rental-car_id").change(function () {
             $selected = $(this).val();   //get selected car id
+            $sdate = $("#rental-rent_start").val();
+            $edate = $("#rental-rent_end").val();
             console.log("Selected car id: " + $selected);
 
 
-            $.get("/rental/ajaxcarprice", {id:$selected}, function ($data) {
-                //display name value which is returned from the action method
+            $.get("/rental/ajaxcarprice", {id:$selected, sdate:$sdate, edate:$edate}, function ($data) {
+                //display values which is returned from the action method
                 console.log("and its value: "+$data);
                 $data = jQuery.parseJSON($data);
 

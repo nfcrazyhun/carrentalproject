@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Car;
 use app\models\User;
+use DateTime;
 use yii\filters\AccessControl;
 use Yii;
 use app\models\Rental;
@@ -214,17 +215,22 @@ class RentalController extends Controller
         return $this->redirect(['rental/rental-history']);
     }
 
-    public function actionAjaxcarprice($id)
+    public function actionAjaxcarprice($id,$sdate,$edate)
     {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
         $model = Car::findOne($id);
-        $basePrice = \app\models\Rental::RENTAL_BASE_PRICE;
+        $basePrice = Rental::RENTAL_BASE_PRICE;
         $rate = $model->rate;
-        $numberOfDays = "Not implemented";
-        $costInPeriod = "Not implemented";
-        //$sumOfCosts = $basePrice+$rate+$numberOfDays+$costInPeriod;
-        $sumOfCosts = $basePrice+$rate;
+        $date_a = new DateTime($sdate);
+        $date_b = new DateTime($edate);
+
+        $datediff = date_diff($date_b,$date_a);
+        $numberOfDays = (integer)$datediff->format('%d');
+
+        $costInPeriod = $numberOfDays*$rate;
+        $sumOfCosts = $basePrice+$rate+$numberOfDays+$costInPeriod;
+        //$sumOfCosts = $basePrice+$rate;
 
 
         $response["basePrice"] = $basePrice;
