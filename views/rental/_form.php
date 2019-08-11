@@ -13,9 +13,7 @@ use yii\widgets\ActiveForm;
 
 <div class="rental-form">
 
-    <?php $form = ActiveForm::begin(
-            ['enableAjaxValidation' => true,]
-    ); ?>
+    <?php $form = ActiveForm::begin(); ?>
 
 <!--    <//?= $form->field($model, 'user_id')->textInput() ?>-->
     <?= $form->field($model, 'user_id')->hiddenInput(['value'=>Yii::$app->user->getId()])->label(false); ?>
