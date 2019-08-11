@@ -111,10 +111,10 @@ use yii\widgets\ActiveForm;
         let $sdate = null;
         let $edate = null;
 
-        $("#rental-car_id").change(function () {
-            $selected = $(this).val();   //get selected car id
-            $sdate = $("#rental-rent_start").val();
-            $edate = $("#rental-rent_end").val();
+        $("#rental-car_id, #rental-rent_start, #rental-rent_end").change(function () {
+            $selected = $("#rental-car_id").val();  //get selected car id
+            $sdate = $("#rental-rent_start").val(); //get start date
+            $edate = $("#rental-rent_end").val();   //get end date
             console.log("Selected car id: " + $selected);
 
 
