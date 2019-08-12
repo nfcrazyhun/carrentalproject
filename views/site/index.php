@@ -11,7 +11,7 @@ $this->title = 'My Yii Application';
 
         <p class="lead">Hello, and welcome to the site!</p>
 
-        <p><img src="../best-car-rentals.jpg" alt="Smiley face"></p>
+        <img src="../best-car-rentals.jpg" alt="Smiley face" class="img-responsive">
 
 <!--        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>-->
     </div>
