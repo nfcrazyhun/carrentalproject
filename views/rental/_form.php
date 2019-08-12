@@ -23,7 +23,7 @@ use yii\widgets\ActiveForm;
     <!--<//?= $form->field($model, 'car_id')->label('Car')->dropDownList(ArrayHelper::map(Car::find()->all(),'id','carfullname'),['prompt'=>'Select a Car']) ?>-->
 
 
-    <?= $form->field($model, 'car_id')->label('Car')->dropDownList(Car::getCarDropdownList(), ['prompt'=>'Select a Car']) ?>
+    <?= $form->field($model, 'car_id')->label('Car')->dropDownList(Car::getCarDropdownList(Car::STATUS_ACTIVE), ['prompt'=>'Select a Car']) ?>
 
 
 

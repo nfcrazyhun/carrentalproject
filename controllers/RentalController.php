@@ -85,7 +85,7 @@ class RentalController extends Controller
     {
         $model = new Rental();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save() && Car::findOne($model->car_id)->status == Car::STATUS_ACTIVE) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

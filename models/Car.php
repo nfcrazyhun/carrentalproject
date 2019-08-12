@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use phpDocumentor\Reflection\Types\Integer;
 use Yii;
 
 /**
@@ -82,12 +83,17 @@ class Car extends \yii\db\ActiveRecord
 
     /**
      * Get all car model and return it to the dropdown list as array
+     * @param int $status Optional
      * @return mixed
      */
-    public static function getCarDropdownList()
+    public static function getCarDropdownList(int $status = null)
     {
         static $dropdown = [];
-        $models = Car::find()->all();
+        if (isset($status)){
+            $models = Car::find()->where(['status'=>$status])->all();
+        }else {
+            $models = Car::find()->all();
+        }
 
         foreach ($models as $model) {
             $dropdown[$model->id] = sprintf(self::$carNameFormat,
