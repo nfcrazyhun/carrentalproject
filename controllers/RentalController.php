@@ -237,10 +237,10 @@ class RentalController extends Controller
         $diffInSec = strtotime($edate)-strtotime($sdate);//calculate two date's difference in seconds
         $numberOfDays = $diffInSec/60/60/24;//calc seconds to days
         $numberOfDays = ceil($numberOfDays);//round it up
+        $numberOfDays = abs($numberOfDays);//then get its absolute value
 
         $costInPeriod = $numberOfDays*$rate;
         $sumOfCosts = $basePrice+$rate+$costInPeriod;
-        //$sumOfCosts = $basePrice+$rate;
 
 
         $response["basePrice"] = $basePrice;
