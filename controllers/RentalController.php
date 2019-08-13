@@ -233,14 +233,13 @@ class RentalController extends Controller
         $model = Car::findOne($id);
         $basePrice = Rental::RENTAL_BASE_PRICE;
         $rate = $model->rate;
-        $date_a = new DateTime($sdate);
-        $date_b = new DateTime($edate);
 
-        $datediff = date_diff($date_b,$date_a);
-        $numberOfDays = (integer)$datediff->format('%d');
+        $diffInSec = strtotime($edate)-strtotime($sdate);//calculate two date's difference in seconds
+        $numberOfDays = $diffInSec/60/60/24;//calc seconds to days
+        $numberOfDays = ceil($numberOfDays);//round it up
 
         $costInPeriod = $numberOfDays*$rate;
-        $sumOfCosts = $basePrice+$rate+$numberOfDays+$costInPeriod;
+        $sumOfCosts = $basePrice+$rate+$costInPeriod;
         //$sumOfCosts = $basePrice+$rate;
 
 
