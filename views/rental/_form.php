@@ -82,12 +82,12 @@ use yii\widgets\ActiveForm;
 
     <div class="potential-price">
 
-        <ul>
-            <li>Base price: <input disabled type="text" id="baseprice"></li>
-            <li>Car's cost per day: <input disabled type="text" id="costperday" >
-            <li>Number of days: <input disabled type="text" id="numberofdays" ></li>
-            <li>Car rental cost in period: <input disabled type="text" id="costinoeriod" ></li>
-            <li>Sum of costs: <input disabled type="text" id="sumofcosts" ></li>
+        <ul type="none" style="display:table;text-align:right;">
+            <li>Base price: <input disabled type="text" id="baseprice" size="6"> unit</li>
+            <li>Car's cost per day: <input disabled type="text" id="costperday" size="6"> unit</li>
+            <li>Number of days: <input disabled type="text" id="numberofdays" size="6"> unit</li>
+            <li>Car's rental cost in period: <input disabled type="text" id="costinoeriod" size="6"> unit</li>
+            <li>Sum of costs: <input disabled type="text" id="sumofcosts" size="6"> unit</li>
         </ul>
     </div>
 
